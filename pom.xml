@@ -14,6 +14,7 @@
         <module>hotreload-registry</module>
         <module>hotreload-boot</module>
         <module>hotreload-core</module>
+        <module>reload-test</module>
     </modules>
 
     <parent>
