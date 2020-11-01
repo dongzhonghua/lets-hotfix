@@ -110,6 +110,7 @@ public class HotReloadAgent {
             Method defineClass = ClassLoader.class.getDeclaredMethod("defineClass", String.class,
                     byte[].class, int.class, int.class);
             defineClass.setAccessible(true);
+            // defineClass(className, bytes, 0, bytes.length); // 把一个类加载到虚拟机里面。
             clazz = (Class<?>) defineClass.invoke(classLoader, className, newClazzByteCode
                     , 0, newClazzByteCode.length);
             logger.info("Class " + className + " define success " + clazz);

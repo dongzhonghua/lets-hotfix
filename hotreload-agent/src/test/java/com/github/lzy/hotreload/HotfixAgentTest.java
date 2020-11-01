@@ -3,6 +3,7 @@ package com.github.lzy.hotreload;
 import static org.junit.Assert.*;
 
 import java.lang.instrument.Instrumentation;
+import java.lang.reflect.InvocationTargetException;
 
 import org.junit.Test;
 
@@ -32,10 +33,12 @@ public class HotfixAgentTest {
     }
 
     @Test
-    public void findStaticClass() {
+    public void findStaticClass()
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
         DummyStaticOuterService dummyService = new DummyStaticOuterService();
         Instrumentation instrumentation = ByteBuddyAgent.install();
         Class<?> targetClass = HotReloadAgent.findTargetClass("com.github.lzy.hotreload.DummyStaticOuterService", instrumentation);
+        System.out.println(targetClass.getMethod("foo").invoke(targetClass.newInstance()));
         assertNotNull(targetClass);
         assertEquals(targetClass, dummyService.getClass());
     }

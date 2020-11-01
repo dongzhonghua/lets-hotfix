@@ -15,6 +15,7 @@
         <module>hotreload-boot</module>
         <module>hotreload-core</module>
         <module>reload-test</module>
+        <module>reload-attach</module>
     </modules>
 
     <parent>

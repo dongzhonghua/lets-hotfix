@@ -53,4 +53,8 @@ public class JavaHomeUtil {
         }
         return toolsJar;
     }
+
+    public static void main(String[] args) {
+        System.out.println(getJavaHomeDir());
+    }
 }
