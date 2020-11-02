@@ -59,12 +59,12 @@ public class HotReloadAgent {
         if (replaceTargetFile.endsWith(".class")) {
             logger.info("Reload by class file");
             byte[] newClazzByteCode = Files.readAllBytes(file.toPath());
-            System.out.println((new String(newClazzByteCode)));
+            logger.info("\n" + new String(newClazzByteCode));
             doReloadClassFile(instrumentation, className, newClazzByteCode);
         } else {
             logger.info("Reload by java file");
             byte[] newClazzSourceBytes = Files.readAllBytes(file.toPath());
-            logger.info(new String(newClazzSourceBytes));
+            logger.info("\n" + new String(newClazzSourceBytes));
             doCompileThenReloadClassFile(instrumentation, className, new String(newClazzSourceBytes, UTF_8));
         }
     }
@@ -94,6 +94,7 @@ public class HotReloadAgent {
             logger.error("Class " + className + " not found");
         } else {
             instrumentation.redefineClasses(new ClassDefinition(clazz, newClazzByteCode));
+            logger.info("no reload redefine=================================");
             logger.info("Congratulations! Reload " + clazz + " success!");
         }
     }
@@ -102,7 +103,10 @@ public class HotReloadAgent {
                                              byte[] newClazzByteCode) {
         Class<?> clazz = findTargetClass(className, instrumentation);
         if (clazz == null) {
+            // 如果不用redefineClasses直接define一个应该也是可以的吧? 不行，一个加载器只能加载一个类一次，否则是重复加载。如果这样的话
+            // 需要打破双亲委派模型，自己写一个类加载器。所以这里还是需要redefine
             clazz = defineNewClass(className, newClazzByteCode, clazz);
+            logger.info("=========defineNewClass" + clazz);
         }
         return clazz;
     }

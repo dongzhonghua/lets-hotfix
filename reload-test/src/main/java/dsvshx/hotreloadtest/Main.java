@@ -13,6 +13,8 @@ public class Main {
             System.out.println("2");
             System.out.println("asdfasdfasdf");
             System.out.println("----------------" + System.currentTimeMillis());
+            // 好像这个插件在main方法里面不起作用？
+            System.out.println(new C().c());
             Thread.sleep(3000);
         }
     }

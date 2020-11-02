@@ -6,6 +6,7 @@ package dsvshx.hotreloadtest;
  */
 public class A {
     public String a() {
-        return "==11==aaa";
+        System.out.println(new C().c());
+        return "aaaaaaaaaaa==1111111111111==aaa";
     }
 }
