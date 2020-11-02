@@ -67,7 +67,7 @@
                                     <Specification-Version>${project.version}</Specification-Version>
                                     <Implementation-Title>${project.name}</Implementation-Title>
                                     <Implementation-Version>${project.version}</Implementation-Version>
-                                    <Main-Class>dsvshx.agent.TimeTest</Main-Class>
+                                    <Main-Class>dsvshx.hotreloadtest.Main</Main-Class>
                                     <Boot-Class-Path>javassist-3.27.0-GA.jar</Boot-Class-Path>
                                 </manifestEntries>
                             </archive>

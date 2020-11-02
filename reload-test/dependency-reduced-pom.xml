@@ -30,15 +30,15 @@
               </descriptorRefs>
               <archive>
                 <manifestEntries>
-                  <Premain-Class>dsvshx.agent.AgentTest</Premain-Class>
-                  <Agent-Class>dsvshx.agent.AgentTest</Agent-Class>
+                  <Premain-Class>dsvshx.attach.AgentMain</Premain-Class>
+                  <Agent-Class>dsvshx.attach.AgentMain</Agent-Class>
                   <Can-Redefine-Classes>true</Can-Redefine-Classes>
                   <Can-Retransform-Classes>true</Can-Retransform-Classes>
                   <Specification-Title>${project.name}</Specification-Title>
                   <Specification-Version>${project.version}</Specification-Version>
                   <Implementation-Title>${project.name}</Implementation-Title>
                   <Implementation-Version>${project.version}</Implementation-Version>
-                  <Main-Class>dsvshx.agent.TimeTest</Main-Class>
+                  <Main-Class>dsvshx.hotreloadtest.Main</Main-Class>
                   <Boot-Class-Path>javassist-3.27.0-GA.jar</Boot-Class-Path>
                 </manifestEntries>
               </archive>

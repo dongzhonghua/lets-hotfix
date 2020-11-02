@@ -24,6 +24,7 @@ import com.github.lzy.hotfix.proxy.AgentWebClient;
 import com.github.lzy.hotfix.registry.HotReloadInstance;
 import com.github.lzy.hotfix.registry.RegistryService;
 import com.github.lzy.hotfix.service.HotfixService;
+import com.github.lzy.hotfix.util.HostUtils;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -45,7 +46,7 @@ public class MainController {
 
     @GetMapping("/")
     public String main(Model model) throws UnknownHostException {
-        model.addAttribute("hostname", InetAddress.getLocalHost().getHostName());
+        model.addAttribute("hostname", HostUtils.getHostName());
         List<HotReloadInstance> instances = registryService.findAllInstances();
         model.addAttribute("instances", instances);
         return "main";

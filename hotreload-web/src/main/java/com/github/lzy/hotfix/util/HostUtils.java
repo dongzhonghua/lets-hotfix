@@ -20,7 +20,11 @@ public final class HostUtils {
             return InetAddress.getLocalHost().getHostName();
         } catch (UnknownHostException e) {
             logger.error("Failed to get host name", e);
-            return "";
+            return "dsvshx";
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getHostName());
     }
 }
