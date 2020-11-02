@@ -21,7 +21,13 @@
             <artifactId>asm-commons</artifactId>
             <version>7.1</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.8.0</version>
+            <scope>system</scope>
+            <systemPath>/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/lib/tools.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>
@@ -49,11 +55,9 @@
                 <executions>
                     <execution>
                         <phase>package</phase>
-
                         <goals>
                             <goal>shade</goal>
                         </goals>
-
                         <configuration>
                             <relocations>
                                 <relocation>
@@ -65,7 +69,6 @@
                                     <shadedPattern>me.ya.agent.hidden.org.objectweb.asm</shadedPattern>
                                 </relocation>
                             </relocations>
-
                         </configuration>
                     </execution>
                 </executions>

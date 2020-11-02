@@ -1,8 +1,6 @@
 package com.github.liuzhengyang.hotreload.bytecode.util;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author liuzhengyang

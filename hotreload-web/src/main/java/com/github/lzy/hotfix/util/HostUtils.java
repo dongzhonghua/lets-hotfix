@@ -23,8 +23,4 @@ public final class HostUtils {
             return "dsvshx";
         }
     }
-
-    public static void main(String[] args) {
-        System.out.println(getHostName());
-    }
 }

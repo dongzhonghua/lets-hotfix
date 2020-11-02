@@ -1,23 +1,24 @@
 package com.github.lzy.hotreload;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.lang.instrument.Instrumentation;
 import java.lang.reflect.InvocationTargetException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import net.bytebuddy.agent.ByteBuddyAgent;
 
 public class HotfixAgentTest {
 
-    @Test
-    public void loop() throws InterruptedException {
-        for (int i = 0; i < 1000000; i++) {
-            Thread.sleep(1000);
-            invoke();
-        }
-    }
+    // @Test
+    // public void loop() throws InterruptedException {
+    //     for (int i = 0; i < 1000000; i++) {
+    //         Thread.sleep(1000);
+    //         invoke();
+    //     }
+    // }
 
     void invoke() {
         System.out.println("lzy");
