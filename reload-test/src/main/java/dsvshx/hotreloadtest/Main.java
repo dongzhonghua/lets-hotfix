@@ -10,7 +10,9 @@ public class Main {
             System.out.println(new A().a());
             System.out.println(new B().b());
             System.out.println(B.bb());
-            System.out.println("----------------");
+            System.out.println("2");
+            System.out.println("asdfasdfasdf");
+            System.out.println("----------------" + System.currentTimeMillis());
             Thread.sleep(3000);
         }
     }

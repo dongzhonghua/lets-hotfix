@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  */
 public class ClassByteCodeUtilsTest {
 
-    @Test
+    // @Test
     public void testGetClassNameFromSourceCode() {
         String fileContent = "package com.github.liuzhengyang.hotreload.bytecode.util;\n" +
                 "\n" +

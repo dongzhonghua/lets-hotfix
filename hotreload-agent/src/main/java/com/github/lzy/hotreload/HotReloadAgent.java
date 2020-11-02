@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.liuzhengyang.hotreload.dynamiccompiler.DynamicCompiler;
+import com.google.common.annotations.VisibleForTesting;
 
 /**
  * @author liuzhengyang
@@ -34,6 +35,7 @@ public class HotReloadAgent {
 
     public static void agentmain(String agentArgs, Instrumentation instrumentation)
             throws IOException, UnmodifiableClassException, ClassNotFoundException {
+        logger.info(agentArgs);
         if (agentArgs == null) {
             throw new IllegalArgumentException("Agent args is null");
         }
@@ -57,10 +59,12 @@ public class HotReloadAgent {
         if (replaceTargetFile.endsWith(".class")) {
             logger.info("Reload by class file");
             byte[] newClazzByteCode = Files.readAllBytes(file.toPath());
+            System.out.println((new String(newClazzByteCode)));
             doReloadClassFile(instrumentation, className, newClazzByteCode);
         } else {
             logger.info("Reload by java file");
             byte[] newClazzSourceBytes = Files.readAllBytes(file.toPath());
+            logger.info(new String(newClazzSourceBytes));
             doCompileThenReloadClassFile(instrumentation, className, new String(newClazzSourceBytes, UTF_8));
         }
     }
@@ -120,6 +124,7 @@ public class HotReloadAgent {
         return clazz;
     }
 
+    @VisibleForTesting
     private static ClassLoader getClassLoader(String className, Instrumentation instrumentation) {
         Class<?> targetClass = findTargetClass(className, instrumentation);
         if (targetClass != null) {
@@ -128,7 +133,10 @@ public class HotReloadAgent {
         return HotReloadAgent.class.getClassLoader();
     }
 
-    //@VisibleForTest
+    /**
+     * 如果classCache缓存了该class信息则返回，否在利用inst找该class信息
+     */
+    @VisibleForTesting
     static Class<?> findTargetClass(String className, Instrumentation instrumentation) {
         return classCache.computeIfAbsent(className, clazzName -> {
             Class[] allLoadedClasses = instrumentation.getAllLoadedClasses();

@@ -6,6 +6,6 @@ package dsvshx.hotreloadtest;
  */
 public class A {
     public String a() {
-        return "aa";
+        return "====aaa";
     }
 }
