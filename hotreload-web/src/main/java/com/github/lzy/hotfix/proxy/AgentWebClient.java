@@ -32,6 +32,7 @@ public class AgentWebClient {
 
     public Mono<Result<HotfixResult>> reloadClass(MultipartFile file,
             String targetPid, String proxyServer) {
+        System.out.println("-------------" + proxyServer);
         WebClient webClient = WebClient.create(proxyServer);
         MultipartBodyBuilder multipartBodyBuilder = new MultipartBodyBuilder();
         multipartBodyBuilder.part("file", file.getResource());

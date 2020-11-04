@@ -46,6 +46,7 @@ public class MainController {
 
     @GetMapping("/")
     public String main(Model model) throws UnknownHostException {
+        System.out.println("--------------------main----------------------");
         model.addAttribute("hostname", HostUtils.getHostName());
         List<HotReloadInstance> instances = registryService.findAllInstances();
         model.addAttribute("instances", instances);
@@ -77,6 +78,7 @@ public class MainController {
     public Mono<Result<HotfixResult>> hotfix(@RequestParam("file") MultipartFile file,
             @RequestParam("targetPid") String targetPid,
             @RequestParam(value = "proxyServer", required = false) String proxyServer) {
+        System.out.println("--------------------------------------"+proxyServer);
         return Mono.justOrEmpty(proxyServer)
                 .flatMap(proxy -> agentWebClient.reloadClass(file, targetPid, proxy))
                 .switchIfEmpty(Mono.fromCallable(() ->

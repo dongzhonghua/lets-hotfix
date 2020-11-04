@@ -40,6 +40,7 @@ public class HotfixService {
     }
 
     public String hotfix(MultipartFile file, String targetPid) throws Exception {
+        logger.info("---------------hotfix--------------------------");
         String fileName = file.getOriginalFilename();
         if (fileName == null) {
             throw new IllegalArgumentException("Invalid file name " + null);
